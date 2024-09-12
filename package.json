@@ -22,8 +22,8 @@
   "browser": "./jyf-color-crafter.js",
   "exports": {
     ".": {
-      "import": "./esm/jyf-color-crafter.js",
-      "require": "./cjs/jyf-color-crafter.js"
+      "import": "./jyf-color-crafter.js",
+      "require": "./jyf-color-crafter.js"
     }
   }
 }
