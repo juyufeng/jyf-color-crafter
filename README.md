@@ -1,9 +1,11 @@
 # jyfColorCrafter
 
 ## 介绍
-jyfColorCrafter 是一个快速的 JavaScript 库，用于颜色操作和转换。它允许多种输入形式，同时提供颜色转换和其他颜色实用函数。它没有依赖关系。
+jyfColorCrafter 是一个高效快速的 JavaScript 库，用于颜色操作和转换。它允许多种输入形式，提供颜色转换和其他颜色实用函数。
+它无需依赖任何其他库，具备跨平台及多浏览器兼容性，开箱即用，且未来将持续进行更新与优化。
 ## Introduction
-jyfColorCrafter is a fast JavaScript library for color manipulation and conversion. It allows multiple input formats and provides color conversion and other color utility functions. It has no dependencies.
+jyfColorCrafter is a fast JavaScript library for color manipulation and conversion. It allows multiple input formats and provides color conversion and other color utility functions. 
+It has no dependencies and is compatible with all browsers.
 
 ## 在 node 中包含
 
