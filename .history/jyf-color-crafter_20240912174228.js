@@ -3,7 +3,7 @@
   (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.JyfColorCrafter = factory());
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.jyfColorCrafter = factory());
 })(this, (function () { 'use strict';
   // w3c 颜色名称库
   const w3cColorNames = {
@@ -168,17 +168,17 @@
     }, _typeof(obj);
   }
 
-  function JyfColorCrafter(color, opts) {
+  function jyfColorCrafter(color, opts) {
     color = color ? color : "";
     opts = opts || {};
 
-    // If input is already a JyfColorCrafter, return itself
-    if (color instanceof JyfColorCrafter) {
+    // If input is already a jyfColorCrafter, return itself
+    if (color instanceof jyfColorCrafter) {
       return color;
     }
     // If we are called as a function, call using new instead
-    if (!(this instanceof JyfColorCrafter)) {
-      return new JyfColorCrafter(color, opts);
+    if (!(this instanceof jyfColorCrafter)) {
+      return new jyfColorCrafter(color, opts);
     }
     var rgb = inputToRGB(color);
     this._originalInput = color, this._r = rgb.r, this._g = rgb.g, this._b = rgb.b, this._a = rgb.a, this._roundA = Math.round(100 * this._a) / 100, this._format = opts.format || rgb.format;
@@ -194,9 +194,9 @@
     this._ok = rgb.ok;
   }
 
-  let names = JyfColorCrafter.names = w3cColorNames;
+  let names = jyfColorCrafter.names = w3cColorNames;
 
-  JyfColorCrafter.prototype = {
+  jyfColorCrafter.prototype = {
     isDark: function isDark() {
       return this.getBrightness() < 128;
     },
@@ -317,7 +317,7 @@
       var secondHex8String = hex8String;
       var gradientType = this._gradientType ? "GradientType = 1, " : "";
       if (secondColor) {
-        var s = JyfColorCrafter(secondColor);
+        var s = jyfColorCrafter(secondColor);
         secondHex8String = "#" + rgbaToArgbHex(s._r, s._g, s._b, s._a);
       }
       return "progid:DXImageTransform.Microsoft.gradient(" + gradientType + "startColorstr=" + hex8String + ",endColorstr=" + secondHex8String + ")";
@@ -366,7 +366,7 @@
       return formattedString || this.toHexString();
     },
     clone: function clone() {
-      return JyfColorCrafter(this.toString());
+      return jyfColorCrafter(this.toString());
     },
     _applyModification: function _applyModification(fn, args) {
       var color = fn.apply(null, [this].concat([].slice.call(args)));
@@ -412,7 +412,7 @@
     splitcomplement: function splitcomplement() {
       return this._applyCombination(_splitcomplement, arguments);
     },
-    // Disabled until https://github.com/bgrins/JyfColorCrafter/issues/254
+    // Disabled until https://github.com/bgrins/jyfColorCrafter/issues/254
     // polyad: function (number) {
     //   return this._applyCombination(polyad, [number]);
     // },
@@ -427,7 +427,7 @@
   // 如果输入是对象，将1强制为"1.0"以正确处理比率
   // String input requires "1.0" as input, so 1 will be treated as 1
   // 字符串输入需要"1.0"作为输入，所以1将被视为1
-  JyfColorCrafter.fromRatio = function (color, opts) {
+  jyfColorCrafter.fromRatio = function (color, opts) {
     if (_typeof(color) == "object") {
       var newColor = {};
       for (var i in color) {
@@ -441,7 +441,7 @@
       }
       color = newColor;
     }
-    return JyfColorCrafter(color, opts);
+    return jyfColorCrafter(color, opts);
   };
 
   // 给定一个字符串或对象，将该输入转换为RGB
@@ -693,12 +693,12 @@
   }
 
   // `equals`
-  JyfColorCrafter.equals = function (color1, color2) {
+  jyfColorCrafter.equals = function (color1, color2) {
     if (!color1 || !color2) return false;
-    return JyfColorCrafter(color1).toRgbString() == JyfColorCrafter(color2).toRgbString();
+    return jyfColorCrafter(color1).toRgbString() == jyfColorCrafter(color2).toRgbString();
   };
-  JyfColorCrafter.random = function () {
-    return JyfColorCrafter.fromRatio({
+  jyfColorCrafter.random = function () {
+    return jyfColorCrafter.fromRatio({
       r: Math.random(),
       g: Math.random(),
       b: Math.random()
@@ -708,68 +708,68 @@
   // Modification Functions
   function _desaturate(color, amount) {
     amount = amount === 0 ? 0 : amount || 10;
-    var hsl = JyfColorCrafter(color).toHsl();
+    var hsl = jyfColorCrafter(color).toHsl();
     hsl.s -= amount / 100;
     hsl.s = clamp01(hsl.s);
-    return JyfColorCrafter(hsl);
+    return jyfColorCrafter(hsl);
   }
   function _saturate(color, amount) {
     amount = amount === 0 ? 0 : amount || 10;
-    var hsl = JyfColorCrafter(color).toHsl();
+    var hsl = jyfColorCrafter(color).toHsl();
     hsl.s += amount / 100;
     hsl.s = clamp01(hsl.s);
-    return JyfColorCrafter(hsl);
+    return jyfColorCrafter(hsl);
   }
   function _greyscale(color) {
-    return JyfColorCrafter(color).desaturate(100);
+    return jyfColorCrafter(color).desaturate(100);
   }
   function _lighten(color, amount) {
     amount = amount === 0 ? 0 : amount || 10;
-    var hsl = JyfColorCrafter(color).toHsl();
+    var hsl = jyfColorCrafter(color).toHsl();
     hsl.l += amount / 100;
     hsl.l = clamp01(hsl.l);
-    return JyfColorCrafter(hsl);
+    return jyfColorCrafter(hsl);
   }
   function _brighten(color, amount) {
     amount = amount === 0 ? 0 : amount || 10;
-    var rgb = JyfColorCrafter(color).toRgb();
+    var rgb = jyfColorCrafter(color).toRgb();
     rgb.r = Math.max(0, Math.min(255, rgb.r - Math.round(255 * -(amount / 100))));
     rgb.g = Math.max(0, Math.min(255, rgb.g - Math.round(255 * -(amount / 100))));
     rgb.b = Math.max(0, Math.min(255, rgb.b - Math.round(255 * -(amount / 100))));
-    return JyfColorCrafter(rgb);
+    return jyfColorCrafter(rgb);
   }
   function _darken(color, amount) {
     amount = amount === 0 ? 0 : amount || 10;
-    var hsl = JyfColorCrafter(color).toHsl();
+    var hsl = jyfColorCrafter(color).toHsl();
     hsl.l -= amount / 100;
     hsl.l = clamp01(hsl.l);
-    return JyfColorCrafter(hsl);
+    return jyfColorCrafter(hsl);
   }
 
   function _spin(color, amount) {
-    var hsl = JyfColorCrafter(color).toHsl();
+    var hsl = jyfColorCrafter(color).toHsl();
     var hue = (hsl.h + amount) % 360;
     hsl.h = hue < 0 ? 360 + hue : hue;
-    return JyfColorCrafter(hsl);
+    return jyfColorCrafter(hsl);
   }
 
   // Combination Functions
   // 组合函数
   // ---------------------
   function _complement(color) {
-    var hsl = JyfColorCrafter(color).toHsl();
+    var hsl = jyfColorCrafter(color).toHsl();
     hsl.h = (hsl.h + 180) % 360;
-    return JyfColorCrafter(hsl);
+    return jyfColorCrafter(hsl);
   }
   function polyad(color, number) {
     if (isNaN(number) || number <= 0) {
       throw new Error("Argument to polyad must be a positive number");
     }
-    var hsl = JyfColorCrafter(color).toHsl();
-    var result = [JyfColorCrafter(color)];
+    var hsl = jyfColorCrafter(color).toHsl();
+    var result = [jyfColorCrafter(color)];
     var step = 360 / number;
     for (var i = 1; i < number; i++) {
-      result.push(JyfColorCrafter({
+      result.push(jyfColorCrafter({
         h: (hsl.h + i * step) % 360,
         s: hsl.s,
         l: hsl.l
@@ -778,13 +778,13 @@
     return result;
   }
   function _splitcomplement(color) {
-    var hsl = JyfColorCrafter(color).toHsl();
+    var hsl = jyfColorCrafter(color).toHsl();
     var h = hsl.h;
-    return [JyfColorCrafter(color), JyfColorCrafter({
+    return [jyfColorCrafter(color), jyfColorCrafter({
       h: (h + 72) % 360,
       s: hsl.s,
       l: hsl.l
-    }), JyfColorCrafter({
+    }), jyfColorCrafter({
       h: (h + 216) % 360,
       s: hsl.s,
       l: hsl.l
@@ -793,25 +793,25 @@
   function _analogous(color, results, slices) {
     results = results || 6;
     slices = slices || 30;
-    var hsl = JyfColorCrafter(color).toHsl();
+    var hsl = jyfColorCrafter(color).toHsl();
     var part = 360 / slices;
-    var ret = [JyfColorCrafter(color)];
+    var ret = [jyfColorCrafter(color)];
     for (hsl.h = (hsl.h - (part * results >> 1) + 720) % 360; --results;) {
       hsl.h = (hsl.h + part) % 360;
-      ret.push(JyfColorCrafter(hsl));
+      ret.push(jyfColorCrafter(hsl));
     }
     return ret;
   }
   function _monochromatic(color, results) {
     results = results || 6;
-    var hsv = JyfColorCrafter(color).toHsv();
+    var hsv = jyfColorCrafter(color).toHsv();
     var h = hsv.h,
       s = hsv.s,
       v = hsv.v;
     var ret = [];
     var modification = 1 / results;
     while (results--) {
-      ret.push(JyfColorCrafter({
+      ret.push(jyfColorCrafter({
         h: h,
         s: s,
         v: v
@@ -824,10 +824,10 @@
   // Utility Functions
   // ---------------------
 
-  JyfColorCrafter.mix = function (color1, color2, amount) {
+  jyfColorCrafter.mix = function (color1, color2, amount) {
     amount = amount === 0 ? 0 : amount || 50;
-    var rgb1 = JyfColorCrafter(color1).toRgb();
-    var rgb2 = JyfColorCrafter(color2).toRgb();
+    var rgb1 = jyfColorCrafter(color1).toRgb();
+    var rgb2 = jyfColorCrafter(color2).toRgb();
     var p = amount / 100;
     var rgba = {
       r: (rgb2.r - rgb1.r) * p + rgb1.r,
@@ -835,24 +835,24 @@
       b: (rgb2.b - rgb1.b) * p + rgb1.b,
       a: (rgb2.a - rgb1.a) * p + rgb1.a
     };
-    return JyfColorCrafter(rgba);
+    return jyfColorCrafter(rgba);
   };
 
   // Readability Functions
   // 对比度函数
-  JyfColorCrafter.readability = function (color1, color2) {
-    var c1 = JyfColorCrafter(color1);
-    var c2 = JyfColorCrafter(color2);
+  jyfColorCrafter.readability = function (color1, color2) {
+    var c1 = jyfColorCrafter(color1);
+    var c2 = jyfColorCrafter(color2);
     return (Math.max(c1.getLuminance(), c2.getLuminance()) + 0.05) / (Math.min(c1.getLuminance(), c2.getLuminance()) + 0.05);
   };
 
   // `isReadable`
   // 第三个参数是一个可选对象。 
   // *Example*
-  //    JyfColorCrafter.isReadable("#000", "#111") => false
-  //    JyfColorCrafter.isReadable("#000", "#111",{level:"AA",size:"large"}) => false
-  JyfColorCrafter.isReadable = function (color1, color2, wcag2) {
-    var readability = JyfColorCrafter.readability(color1, color2);
+  //    jyfColorCrafter.isReadable("#000", "#111") => false
+  //    jyfColorCrafter.isReadable("#000", "#111",{level:"AA",size:"large"}) => false
+  jyfColorCrafter.isReadable = function (color1, color2, wcag2) {
+    var readability = jyfColorCrafter.readability(color1, color2);
     var wcag2Parms, out;
     out = false;
     wcag2Parms = validateWCAG2Parameters(wcag2);
@@ -877,11 +877,11 @@
   // 第三个参数是一个可选对象。
   // *Example*
   // *Example*
-  //    JyfColorCrafter.mostReadable(JyfColorCrafter.mostReadable("#123", ["#124", "#125"],{includeFallbackColors:false}).toHexString(); // "#112255"
-  //    JyfColorCrafter.mostReadable(JyfColorCrafter.mostReadable("#123", ["#124", "#125"],{includeFallbackColors:true}).toHexString();  // "#ffffff"
-  //    JyfColorCrafter.mostReadable("#a8015a", ["#faf3f3"],{includeFallbackColors:true,level:"AAA",size:"large"}).toHexString(); // "#faf3f3"
-  //    JyfColorCrafter.mostReadable("#a8015a", ["#faf3f3"],{includeFallbackColors:true,level:"AAA",size:"small"}).toHexString(); // "#ffffff"
-  JyfColorCrafter.mostReadable = function (baseColor, colorList, args) {
+  //    jyfColorCrafter.mostReadable(jyfColorCrafter.mostReadable("#123", ["#124", "#125"],{includeFallbackColors:false}).toHexString(); // "#112255"
+  //    jyfColorCrafter.mostReadable(jyfColorCrafter.mostReadable("#123", ["#124", "#125"],{includeFallbackColors:true}).toHexString();  // "#ffffff"
+  //    jyfColorCrafter.mostReadable("#a8015a", ["#faf3f3"],{includeFallbackColors:true,level:"AAA",size:"large"}).toHexString(); // "#faf3f3"
+  //    jyfColorCrafter.mostReadable("#a8015a", ["#faf3f3"],{includeFallbackColors:true,level:"AAA",size:"small"}).toHexString(); // "#ffffff"
+  jyfColorCrafter.mostReadable = function (baseColor, colorList, args) {
     var bestColor = null;
     var bestScore = 0;
     var readability;
@@ -891,25 +891,25 @@
     level = args.level;
     size = args.size;
     for (var i = 0; i < colorList.length; i++) {
-      readability = JyfColorCrafter.readability(baseColor, colorList[i]);
+      readability = jyfColorCrafter.readability(baseColor, colorList[i]);
       if (readability > bestScore) {
         bestScore = readability;
-        bestColor = JyfColorCrafter(colorList[i]);
+        bestColor = jyfColorCrafter(colorList[i]);
       }
     }
-    if (JyfColorCrafter.isReadable(baseColor, bestColor, {
+    if (jyfColorCrafter.isReadable(baseColor, bestColor, {
       level: level,
       size: size
     }) || !includeFallbackColors) {
       return bestColor;
     } else {
       args.includeFallbackColors = false;
-      return JyfColorCrafter.mostReadable(baseColor, ["#fff", "#000"], args);
+      return jyfColorCrafter.mostReadable(baseColor, ["#fff", "#000"], args);
     }
   };
 
   // 通过`hexNames[hex]`轻松访问颜色
-  var hexNames = JyfColorCrafter.hexNames = flip(names);
+  var hexNames = jyfColorCrafter.hexNames = flip(names);
 
   // Utilities
   // ---------
@@ -1163,5 +1163,5 @@
     };
   }
 
-  return JyfColorCrafter;
+  return jyfColorCrafter;
 }));

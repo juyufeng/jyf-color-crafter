@@ -1,5 +1,5 @@
 {
-  "version": "1.0.1",
+  "version": "1.0.0",
   "name": "jyf-color-crafter",
   "description": "jyf-color-crafter is a color manipulation library",
   "url": "https://github.com/juyufeng/jyf-color-crafter",
@@ -11,7 +11,7 @@
   "keywords": [
     "color",
     "parser",
-    "JyfColorCrafter"
+    "jyfColorCrafter"
   ],
   "author": "juyufeng",
   "bugs": {
