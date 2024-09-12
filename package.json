@@ -17,13 +17,13 @@
   "bugs": {
     "url": "https://github.com/juyufeng/jyf-color-crafter/issues"
   },
-  "module": "dist/index.js",
-  "main": "dist/index.js",
-  "browser": "dist/index.js",
+  "module": "dict/index.js",
+  "main": "dict/index.js",
+  "browser": "dict/index.js",
   "exports": {
     ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.js"
+      "import": "./dict/index.js",
+      "require": "./dict/index.js"
     }
   }
 }
