@@ -1,5 +1,5 @@
 {
-  "version": "1.0.3",
+  "version": "1.1.0",
   "name": "jyf-color-crafter",
   "description": "jyf-color-crafter is a color manipulation library",
   "url": "https://github.com/juyufeng/jyf-color-crafter",
@@ -17,13 +17,13 @@
   "bugs": {
     "url": "https://github.com/juyufeng/jyf-color-crafter/issues"
   },
-  "module": "dict/index.js",
-  "main": "dict/index.js",
-  "browser": "dict/index.js",
+  "module": "./esm/JyfColorCrafter.js",
+  "main": "./cjs/JyfColorCrafter.js",
+  "browser": "./cjs/JyfColorCrafter.js",
   "exports": {
     ".": {
-      "import": "./dict/index.js",
-      "require": "./dict/index.js"
+      "import": "./esm/JyfColorCrafter.js",
+      "require": "./cjs/JyfColorCrafter.js"
     }
   }
 }
