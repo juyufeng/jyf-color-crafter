@@ -1,0 +1,29 @@
+{
+  "version": "1.1.0",
+  "name": "jyf-color-crafter",
+  "description": "jyf-color-crafter is a color manipulation library",
+  "url": "https://github.com/juyufeng/jyf-color-crafter",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/juyufeng/jyf-color-crafter.git"
+  },
+  "keywords": [
+    "color",
+    "parser",
+    "JyfColorCrafter"
+  ],
+  "author": "juyufeng",
+  "bugs": {
+    "url": "https://github.com/juyufeng/jyf-color-crafter/issues"
+  },
+  "module": "./esm/JyfColorCrafter.js",
+  "main": "./cjs/JyfColorCrafter.js",
+  "browser": "./cjs/JyfColorCrafter.js",
+  "exports": {
+    ".": {
+      "import": "./esm/JyfColorCrafter.js",
+      "require": "./cjs/JyfColorCrafter.js"
+    }
+  }
+}
