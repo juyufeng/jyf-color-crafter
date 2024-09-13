@@ -1,10 +1,15 @@
 
-  
-  (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-  typeof define === 'function' && define.amd ? define(factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.JyfColorCrafter = factory());
-})(this, (function () { 'use strict';
+(function (global, factory) {
+  if (typeof exports === 'object' && typeof module !== 'undefined') {
+    module.exports = factory();
+  } else if (typeof define === 'function' && define.amd) {
+    define(factory);
+  } else {
+    global = typeof globalThis !== 'undefined' ? globalThis : global || self;
+    global.JyfColorCrafter = factory();
+  }
+})(this, function () {
+  'use strict';
   // w3c 颜色名称库
   const w3cColorNames = {
     aliceblue: "f0f8ff",
@@ -1164,4 +1169,4 @@
   }
 
   return JyfColorCrafter;
-}));
+});
