@@ -17,12 +17,12 @@
   "bugs": {
     "url": "https://github.com/juyufeng/jyf-color-crafter/issues"
   },
-  "main": "lib/JyfColorCrafter.js",
+  "main": "ejs/JyfColorCrafter.js",
   "exports": {
-    ".": "./lib/JyfColorCrafter.js"
+    ".": "./ejs/JyfColorCrafter.js"
   },
   "scripts": {
-    "build": "npx babel JyfColorCrafter.js  --out-dir lib"
+    "build": "npx babel JyfColorCrafter.js  --out-dir ejs"
   },
   "devDependencies": {
     "@babel/cli": "^7.25.6",
