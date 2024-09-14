@@ -17,9 +17,9 @@
   "bugs": {
     "url": "https://github.com/juyufeng/jyf-color-crafter/issues"
   },
-  "module": "./es6/JyfColorCrafter.js",
+  "module": "es6/JyfColorCrafter.js",
   "main": "ejs/JyfColorCrafter.js",
-  "browser": "./ejs/JyfColorCrafter.js",
+  "browser": "ejs/JyfColorCrafter.js",
   "exports": {
     ".": {
       "import": "./es6/JyfColorCrafter.js",
