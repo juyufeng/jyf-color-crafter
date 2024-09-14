@@ -1,21 +1,4 @@
-"use strict";
 
-function _typeof2(o) { "@babel/helpers - typeof"; return _typeof2 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof2(o); }
-(function (global, factory) {
-  if ((typeof exports === "undefined" ? "undefined" : _typeof2(exports)) === 'object' && typeof module !== 'undefined') {
-    // CommonJS
-    var moduleJyfColorCrafter = require("JyfColorCrafter");
-    modules.exports = factory(moduleJyfColorCrafter);
-  } else if (typeof define === 'function' && define.amd) {
-    // AMD
-    define(factory);
-  } else {
-    // Browser
-    global = typeof globalThis !== 'undefined' ? globalThis : global || self;
-    global.JyfColorCrafter = factory();
-  }
-})(void 0, function () {
-  'use strict';
 
   // w3c 颜色名称库
   var w3cColorNames = {
@@ -1168,5 +1151,4 @@ function _typeof2(o) { "@babel/helpers - typeof"; return _typeof2 = "function" =
       size: size
     };
   }
-  return JyfColorCrafter;
-});
+export default JyfColorCrafter;

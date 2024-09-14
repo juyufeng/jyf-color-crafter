@@ -1,5 +1,5 @@
 {
-  "version": "2.0.0",
+  "version": "3.0.0",
   "name": "jyf-color-crafter",
   "description": "jyf-color-crafter is a color manipulation library",
   "url": "https://github.com/juyufeng/jyf-color-crafter",
@@ -17,16 +17,25 @@
   "bugs": {
     "url": "https://github.com/juyufeng/jyf-color-crafter/issues"
   },
+  "module": "./es6/JyfColorCrafter.js",
   "main": "ejs/JyfColorCrafter.js",
+  "browser": "./ejs/JyfColorCrafter.js",
   "exports": {
-    ".": "./ejs/JyfColorCrafter.js"
+    ".": {
+      "import": "./es6/JyfColorCrafter.js",
+      "require": "./ejs/JyfColorCrafter.js"
+    }
   },
   "scripts": {
-    "build": "npx babel JyfColorCrafter.js  --out-dir ejs"
+    "build": "node build.js"
   },
   "devDependencies": {
     "@babel/cli": "^7.25.6",
     "@babel/core": "^7.25.2",
-    "@babel/preset-env": "^7.25.4"
+    "@babel/preset-env": "^7.25.4",
+    "chalk": "2.4.2",
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7",
+    "runjs": "^4.1.3"
   }
 }

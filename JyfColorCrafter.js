@@ -1,14 +1,20 @@
 
 (function (global, factory) {
   if (typeof exports === 'object' && typeof module !== 'undefined') {
-    module.exports = factory();
-  } else if (typeof define === 'function' && define.amd) {
+    // CommonJS
+    let moduleJyfColorCrafter = require("JyfColorCrafter")
+    modules.exports = factory(moduleJyfColorCrafter)
+  }
+  else if (typeof define === 'function' && define.amd) {
+    // AMD
     define(factory);
-  } else {
+  }
+  else {
+    // Browser
     global = typeof globalThis !== 'undefined' ? globalThis : global || self;
     global.JyfColorCrafter = factory();
   }
-})(this, function () {
+})(this, () => {
   'use strict';
   // w3c 颜色名称库
   const w3cColorNames = {
@@ -232,9 +238,9 @@
       RsRGB = rgb.r / 255;
       GsRGB = rgb.g / 255;
       BsRGB = rgb.b / 255;
-      if (RsRGB <= 0.03928) R = RsRGB / 12.92;else R = Math.pow((RsRGB + 0.055) / 1.055, 2.4);
-      if (GsRGB <= 0.03928) G = GsRGB / 12.92;else G = Math.pow((GsRGB + 0.055) / 1.055, 2.4);
-      if (BsRGB <= 0.03928) B = BsRGB / 12.92;else B = Math.pow((BsRGB + 0.055) / 1.055, 2.4);
+      if (RsRGB <= 0.03928) R = RsRGB / 12.92; else R = Math.pow((RsRGB + 0.055) / 1.055, 2.4);
+      if (GsRGB <= 0.03928) G = GsRGB / 12.92; else G = Math.pow((GsRGB + 0.055) / 1.055, 2.4);
+      if (BsRGB <= 0.03928) B = BsRGB / 12.92; else B = Math.pow((BsRGB + 0.055) / 1.055, 2.4);
       return 0.2126 * R + 0.7152 * G + 0.0722 * B;
     },
     setAlpha: function setAlpha(value) {
