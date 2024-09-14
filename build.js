@@ -12,7 +12,7 @@ console.log(chalk`{blue.underline begin es6}`);
 run(`npx babel JyfColorCrafter.js  --out-dir es6`)
 fs.readFile(filePath, 'utf8', (err, data) => {
   if (err) {
-    console.error('读取文件时发生错误:', err);
+    console.error('read file error:', err);
     return;
   }
 
